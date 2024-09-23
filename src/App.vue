@@ -5,8 +5,30 @@
     <router-link :to="{ name: 'jobs' }">Jobs</router-link>
     <!-- <a href="/about"> about </a> -->
   </nav>
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Go Back</button>
+  <button @click="forward">Go Forward</button>
   <router-view/>
 </template>
+
+<script>
+import HomeView from './views/HomeView.vue';
+
+export default {
+  methods: {
+    redirect() {
+      this.$router.push({ name: 'home'})
+    },
+    back() {
+      this.$router.go(-1)
+    },
+    forward() {
+      this.$router.go(1)
+    }
+  },
+}
+</script>
+
 
 <style>
 #app {
@@ -15,6 +37,13 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+button{
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 
 nav {
